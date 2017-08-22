@@ -1,0 +1,4 @@
+// load initial screen
+$(function(){
+
+});
