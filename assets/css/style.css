@@ -3,10 +3,11 @@
 }
 
 footer {
-	background-color: #666666;
+	background-color: #ddd7d7;
 	border-style: solid;
-	border-color: #4aaaa5;
-	border-top-width: 5pt;
+	border-color: #bebebe;
+	border-top-width: 1pt;
 	text-align: center;
+	padding: 10pt;
 	margin-top: 20pt;
 }
