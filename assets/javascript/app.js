@@ -11,6 +11,7 @@
 
 		$('#start-button').click(function(){
 			generateHTML();
+			startCountdown();
 		});
 
 		$(document).on("click", ".answers", function(event){
@@ -19,7 +20,7 @@
 
 			if(selectedAnswer===correctAnswerArray[questionCounter]) {
 				alert("Correct");
-			} else{
+			} else {
 				alert("Wrong!");
 			};
 		});
@@ -37,7 +38,7 @@ function generateHTML(){
 		"</p></div><div id='answer-C'class='answers'><p>"+ answersArray[questionCounter][2] +
 		"</p></div><div id='answer-D'class='answers'><p>"+ answersArray[questionCounter][3] +
 		"</p></div></div></div></div>" +
-		"<div class='col-lg-4'><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Score Box</h3></div><div id='time-tracker'><h3>Time Remaining</h3><div id='time-left'>10</div></div><div id='score-keeper'><h3>Score</h3><div id='score-number'>0</div>	</div></div></div></div>";
+		"<div class='col-lg-4'><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Score Box</h3></div><div id='time-tracker'><h3>Time Remaining</h3><div id='time-left'>20</div></div><div id='score-keeper'><h3>Score</h3><div id='score-number'>0</div>	</div></div></div></div>";
 	$('.container-fluid').html(questionHTML);
 };
 
@@ -55,11 +56,16 @@ function generateLossDueToTimeOut(){
 
 function startCountdown(){
 	theClock = setInterval(twentySeconds,1000);
-	if (theClock===0){
-		generateLossDueToTimeOut();
-		clearInterval(theClock);
-	}
-
+		function twentySeconds(){
+			if (counter===0){
+				generateLossDueToTimeOut();
+				clearInterval(theClock);
+			} else {
+				counter--;
+			}
+			$('#time-left').html(counter);
+			console.log(counter);
+		};
 };
 
 // variables
@@ -88,3 +94,4 @@ var questionCounter = 0;
 var timeCounter = 15;
 var selectedAnswer ="";
 var theClock;
+var counter=20;
